@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<style>
+    html {
+        height: 100%;
+    }
+
+    .responsive-form {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .responsive-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .responsive-form input[type="text"],
+    .responsive-form input[type="email"],
+    .responsive-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .responsive-form input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: url(https://sakaivault.io/img/bg-wires.svg), url(https://sakaivault.io/img/bg-wires.svg), linear-gradient(0deg, #080f16, transparent);
+        background-color: #080f16;
+    }
+
+    .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, .5);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+        border-radius: 10px;
+    }
+
+    .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+    }
+
+    .login-box .user-box {
+        position: relative;
+    }
+
+    .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+    }
+
+    .login-box .user-box label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+
+    .login-box .user-box input:focus~label,
+    .login-box .user-box input:valid~label {
+        top: -20px;
+        left: 0;
+        color: #4ab081;
+        font-size: 12px;
+    }
+
+    .login-box form a {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #4ab081;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 40px;
+        letter-spacing: 4px
+    }
+
+    .login-box a:hover {
+        background: #4ab081;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #4ab081,
+            0 0 25px #4ab081,
+            0 0 50px #4ab081,
+            0 0 100px #4ab081;
+    }
+
+    .login-box a span {
+        position: absolute;
+        display: block;
+    }
+
+    .login-box a span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #4ab081);
+        animation: btn-anim1 1s linear infinite;
+    }
+
+    @keyframes btn-anim1 {
+        0% {
+            left: -100%;
+        }
+
+        50%,
+        100% {
+            left: 100%;
+        }
+    }
+
+    .login-box a span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #4ab081);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: .25s
+    }
+
+    @keyframes btn-anim2 {
+        0% {
+            top: -100%;
+        }
+
+        50%,
+        100% {
+            top: 100%;
+        }
+    }
+
+    .login-box a span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #4ab081);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: .5s
+    }
+
+    @keyframes btn-anim3 {
+        0% {
+            right: -100%;
+        }
+
+        50%,
+        100% {
+            right: 100%;
+        }
+    }
+
+    .login-box a span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #4ab081);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: .75s
+    }
+
+    @keyframes btn-anim4 {
+        0% {
+            bottom: -100%;
+        }
+
+        50%,
+        100% {
+            bottom: 100%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .responsive-form input[type="text"] {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="https://sakaivault.io/_next/static/media/icon.7a2fa43a.svg" />
+    <TITLE>Calculate Sakai Vault Return</TITLE>
+</head>
+
+<body>
+    
+    <div class="login-box">
+        <img alt="_"
+            srcset="https://sakaivault.io/_next/static/media/icon.7a2fa43a.svg 1x, https://sakaivault.io/_next/static/media/icon.7a2fa43a.svg 2x"
+            src="https://sakaivault.io/_next/static/media/icon.7a2fa43a.svg" width="32" height="37" decoding="async"
+            data-nimg="1" loading="lazy" style="color:transparent">
+        <h2>Calculate</h2>
+
+        <form class="responsive-form">
+            <div class="user-box">
+                <input type="text" id="daystake" name="daystake" required="">
+                <label>Enter Days Stake</label>
+            </div>
+            <div class="user-box">
+                <input type="text" id="deposit" name="deposit" required="">
+                <label>Enter Deposit</label>
+            </div>
+            <div class="user-box">
+                <input type="text" id="day" name="day" required="">
+                <label>Enter How often do you want to stake</label>
+            </div>
+            <div class="user-box">
+                <input type="date" id="start" name="start" required="">
+                <label>Enter Your Start Date</label>
+            </div>
+            <a id="final"></a>
+            <a href="#" id="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </a>
+            <a href="#" id="excel" onclick="window.location.href = 'Result.html'">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Result
+            </a>
+        </form>
+    </div>
+    <p id="demo"></p>
+    <script>
+        document.getElementById('start').valueAsDate = new Date();
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+        let excel = "";
+        
+        //your existing code goes here
+        document.getElementById("submit").onclick = function () {
+            var daystake = parseInt(document.getElementById("daystake").value); // Principal amount
+            var totalday = daystake + 251;
+            var amound = parseInt(document.getElementById("deposit").value);
+            var day = parseInt(document.getElementById("day").value);
+            var date = new Date(document.getElementById("start").value);
+            var cal = 0;
+            var totaldeposit = 0;
+            let final = "";
+            var bnb = (daystake / day)  * 4 ;
+            for (let i = 1; i < totalday; i++) {
+                var last_date = new Date(date)
+                console.log(last_date);
+                last_date.setDate(last_date.getDate() + i-1);
+                console.log(`${last_date.getDate()}/${last_date.getMonth()+1}/${last_date.getFullYear()}`);
+                var calculate = amound * 0.008 * 0.95
+                if (i > daystake) {
+                    var amound = amound + cal
+                    var interest = amound * 0.008 * 0.95
+                    var income = interest * 250
+                    final += "Rewards: " + " <b>" + formatter.format(interest) + " </b>" + " <br>";
+                    final += "Deposit: " + " <b>" + formatter.format(amound) + " </b>" + " <br>";
+                    final += "Max Return: " + "<b>" + formatter.format(income) + " </b>" + " <br>";
+                    final += "BNB's Fee: " + " <b>" + formatter.format(bnb) + " </b>" + " <br>";
+                    final += "Income: " + " <b>" + formatter.format(income - bnb) + " </b>" + " <br>";
+                    final += "SWAP: " + " <b>" + formatter.format((income - bnb) * 0.969) + " </b>" + " <br>";
+                    break;
+                } else {
+                    if (i % day === 0) {
+                        cal = calculate + cal
+                        var amound = amound + cal
+                        cal = 0
+                        //text += "Day" + i + ": " + Math.round(amound) + " <br>";
+                        excel += "<tr><td> Ngày: " + i +  "</td><td>"+ `${last_date.getDate()}/${last_date.getMonth()+1}/${last_date.getFullYear()}` +"</td><td>" + formatter.format(amound) + "</td> <td>" + formatter.format(cal) + " </td></tr>";
+                    }
+                    else {
+                        cal = calculate + cal
+                        //text += "Day" + i + ": " + Math.round(amound) + " <br>";
+                        excel += "<tr><td> Ngày: " + i +  "</td><td>"+ `${last_date.getDate()}/${last_date.getMonth()+1}/${last_date.getFullYear()}` +"</td><td>" + formatter.format(amound) + "</td> <td>" + formatter.format(cal) + " </td></tr>";
+                    }
+                }
+
+            }
+            document.getElementById("final").innerHTML = final;
+            document.getElementById("excel").addEventListener("click", function() {
+            localStorage.removeItem('excels');
+            localStorage.setItem('excels', excel);
+        });
+        }
+    </script>
+</body>
+
+</html>
