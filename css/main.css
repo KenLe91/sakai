@@ -472,13 +472,15 @@ iframe {
 .login100-form a:hover {
   background: #4ab081;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 0 5px #4ab081,
       0 0 25px #4ab081,
       0 0 50px #4ab081,
       0 0 100px #4ab081;
+  p{
+      color:#fff;
+  }
 }
-
 .login100-form a span {
   position: absolute;
   display: block;
