@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<TITLE>Calculate Sakai Vault Return</TITLE>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="https://sakaivault.io/_next/static/media/icon.7a2fa43a.svg" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Days Get Claim Locked
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5">
+
+					<div class="wrap-input100 validate-input" data-validate="">
+						<input class="input100" type="text" id="claimLocked" name="claimLocked"
+							placeholder="Enter Claim Clocked">
+						<span class="focus-input100" data-placeholder="&#xe822;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="">
+						<input class="input100" type="text" id="dailyReward" name="dailyReward"
+							placeholder="Enter Daily Reward">
+						<span class="focus-input100" data-placeholder="&#xe827;"></span>
+					</div>
+					<div class="container-login100-form-btn m-t-32">
+						<a id="final"></a>
+					</div>
+					<div class="container-login100-form-btn m-t-32">
+						<a href="#" id="submit">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							Submit
+						</a>
+						
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+	<script>
+		const formatter = new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: 'USD',
+		});
+		let excel = "";
+
+		//your existing code goes here
+		document.getElementById("submit").onclick = function () {
+			let text = "";
+			var dailyReward = parseInt(document.getElementById("dailyReward").value);
+			var claimLocked = parseInt(document.getElementById("claimLocked").value);;
+			var claimLockedCal = 0;
+			var calculateDaily = 0;
+			var totalReceived = 0;
+			var day = 0;
+			for (let i = 0; i < claimLocked; i++) {
+				if (totalReceived > claimLocked) {
+					day = i;
+					final += "<p> Days: " + day + " </p>" + " <br>";
+					final += "<p> Total Claimed: " + formatter.format(totalReceived) + " </p>" + " <br>";
+					break;
+
+				}
+				if (i === 0) {
+					calculateDaily = claimLocked * 0.008;
+					totalReceived = calculateDaily;
+					claimLockedCal = claimLocked - calculateDaily
+					console.log(calculateDaily)
+				} else {
+					claimLockedCal = (claimLockedCal + dailyReward) - calculateDaily
+					calculateDaily = (claimLockedCal + dailyReward) * 0.008;
+					totalReceived = totalReceived + calculateDaily
+					console.log(calculateDaily)
+				}
+			}
+			document.getElementById("final").innerHTML = final;
+			//document.getElementById("excel").addEventListener("click", function () {
+				//localStorage.removeItem('excels');
+				//localStorage.setItem('excels', excel);
+			//});
+		}
+	</script>
+</body>
+
+</html>
